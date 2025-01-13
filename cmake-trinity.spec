@@ -28,7 +28,7 @@ BuildRequires: gcc-c++ perl(Encode.pm) cmake desktop-file-utils
 %endif
 %define tde_pkg tde-cmake
 
-Name:		trinity-cmake
+Name:		cmake-trinity
 Version:	14.1.3
 Release:	alt1_%{?tde_version}_%{?!preversion:1}%{?preversion:0_%{preversion}}
 Summary:	TDE CMake modules
@@ -48,8 +48,8 @@ Source1: import.info
 
 Requires:		cmake
 
-Obsoletes:		trinity-cmake < %version-%release
-Provides:		trinity-cmake = %version-%release
+Obsoletes:		cmake-trinity < %version-%release
+Provides:		cmake-trinity = %version-%release
 
 %description
 TDE uses its own set of modules and macros to simplify CMake rules.
