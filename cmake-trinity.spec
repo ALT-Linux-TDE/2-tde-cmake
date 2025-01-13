@@ -72,48 +72,14 @@ intltool-merge used to merge translations into desktop files.
 %prep
 %setup -q -n %{name}-%{tde_version}%{?preversion:~%{preversion}}
 
-
-%build
-unset QTDIR QTINC QTLIB
-
-if ! rpm -E %%cmake|grep -e 'cd build\|cd ${CMAKE_BUILD_DIR:-build}'; then
-  mkdir -p build
-  cd build
-fi
-
-%{suse_cmake} \
-  -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
-  -DCMAKE_VERBOSE_MAKEFILE=ON \
-  -DWITH_GCC_VISIBILITY=ON \
-  \
-  -DBUILD_ALL="ON" \
-  -DWITH_ALL_OPTIONS="ON" \
-  ..
-
-make %{?_smp_mflags} || make
-
-
 %install
-rm -rf %{?buildroot}
-make install -C build DESTDIR=%{?buildroot}
+mkdir -p %buildroot%_datadir/%name/
+cp -a * %buildroot%_datadir/%name/
 
 
 %files
-%cmake_datadir/Modules/FindTDE.cmake
-%cmake_datadir/Modules/FindTQt.cmake
-%cmake_datadir/Modules/FindTQtQUI.cmake
-%cmake_datadir/Modules/TDEL10n.cmake
-%cmake_datadir/Modules/TDEMacros.cmake
-%cmake_datadir/Modules/TDESetupPaths.cmake
-%cmake_datadir/Modules/TDEVersion.cmake
-%cmake_datadir/Modules/tde_automoc.cmake
-%cmake_datadir/Modules/tde_l10n_merge.pl
-%cmake_datadir/Modules/tde_uic.cmake
-%cmake_datadir/Templates/tde_dummy_cpp.cmake
-%cmake_datadir/Templates/tde_export_library.cmake
-%cmake_datadir/Templates/tde_libtool_file.cmake
-%cmake_datadir/Templates/tde_tdeinit_executable.cmake
-%cmake_datadir/Templates/tde_tdeinit_module.cmake
+%doc COPYING README
+%_datadir/%name/
 
 
 %changelog
