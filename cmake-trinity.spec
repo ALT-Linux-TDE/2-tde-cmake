@@ -103,21 +103,21 @@ make install -C build DESTDIR=%{?buildroot}
 
 
 %files
-%{cmake_datadir}/Modules/FindTDE.cmake
-%{cmake_datadir}/Modules/FindTQt.cmake
-%{cmake_datadir}/Modules/FindTQtQUI.cmake
-%{cmake_datadir}/Modules/TDEL10n.cmake
-%{cmake_datadir}/Modules/TDEMacros.cmake
-%{cmake_datadir}/Modules/TDESetupPaths.cmake
-%{cmake_datadir}/Modules/TDEVersion.cmake
-%{cmake_datadir}/Modules/tde_automoc.cmake
-%{cmake_datadir}/Modules/tde_l10n_merge.pl
-%{cmake_datadir}/Modules/tde_uic.cmake
-%{cmake_datadir}/Templates/tde_dummy_cpp.cmake
-%{cmake_datadir}/Templates/tde_export_library.cmake
-%{cmake_datadir}/Templates/tde_libtool_file.cmake
-%{cmake_datadir}/Templates/tde_tdeinit_executable.cmake
-%{cmake_datadir}/Templates/tde_tdeinit_module.cmake
+%cmake_datadir/Modules/FindTDE.cmake
+%cmake_datadir/Modules/FindTQt.cmake
+%cmake_datadir/Modules/FindTQtQUI.cmake
+%cmake_datadir/Modules/TDEL10n.cmake
+%cmake_datadir/Modules/TDEMacros.cmake
+%cmake_datadir/Modules/TDESetupPaths.cmake
+%cmake_datadir/Modules/TDEVersion.cmake
+%cmake_datadir/Modules/tde_automoc.cmake
+%cmake_datadir/Modules/tde_l10n_merge.pl
+%cmake_datadir/Modules/tde_uic.cmake
+%cmake_datadir/Templates/tde_dummy_cpp.cmake
+%cmake_datadir/Templates/tde_export_library.cmake
+%cmake_datadir/Templates/tde_libtool_file.cmake
+%cmake_datadir/Templates/tde_tdeinit_executable.cmake
+%cmake_datadir/Templates/tde_tdeinit_module.cmake
 
 
 %changelog
