@@ -1,4 +1,3 @@
-copy: import.info
 copy: modules/*.cmake
 copy: modules/*.pl
 copy: templates/*.cmake
