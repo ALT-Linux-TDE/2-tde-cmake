@@ -63,7 +63,9 @@ intltool-merge used to merge translations into desktop files.
 %setup -n %name-%tde_version%{?preversion:~%preversion}
 
 %install
-%cmakeinstall
+mkdir -p %buildroot%_datadir/%name/
+cp -a * %buildroot%_datadir/%name/
+
 
 %files
 %_datadir/%name/
