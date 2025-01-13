@@ -35,7 +35,7 @@ BuildRequires: gcc-c++ perl(Encode.pm)
 %endif
 
 
-Name:		trinity-%{tde_pkg}
+Name:		trinity-cmake
 Version:	%{tde_version}
 Release:	alt1_%{?!preversion:1}%{?preversion:0_%{preversion}}
 Summary:	TDE CMake modules
@@ -54,7 +54,7 @@ License:	GPLv2+
 Prefix:		%{_prefix}
 BuildArch:	noarch
 
-Source0:		%{name}-%{tde_version}%{?preversion:~%{preversion}}.tar.gz
+Source0:		cmake-trinity-%{tde_version}.tar
 
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
