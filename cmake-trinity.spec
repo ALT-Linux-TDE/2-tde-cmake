@@ -70,7 +70,7 @@ intltool-merge used to merge translations into desktop files.
 
 
 %prep
-%setup -q -n %{name}-%{tde_version}%{?preversion:~%{preversion}}
+%setup -n %name-%tde_version%{?preversion:~%preversion}
 
 %install
 mkdir -p %buildroot%_datadir/%name/
