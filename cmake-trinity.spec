@@ -68,7 +68,6 @@ cp -a * %buildroot%_datadir/%name/
 
 
 %files
-%doc COPYING README
 %_datadir/%name/
 
 
