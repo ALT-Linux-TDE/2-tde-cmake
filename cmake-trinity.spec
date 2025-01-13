@@ -1,6 +1,6 @@
 # BEGIN SourceDeps(oneline):
 BuildRequires(pre): rpm-macros-suse-compat
-BuildRequires: gcc-c++ perl(Encode.pm)
+BuildRequires: gcc-c++ perl(Encode.pm) cmake desktop-file-utils
 # END SourceDeps(oneline)
 %define suse_version 1550
 # see https://bugzilla.altlinux.org/show_bug.cgi?id=10382
@@ -28,16 +28,9 @@ BuildRequires: gcc-c++ perl(Encode.pm)
 %endif
 %define tde_pkg tde-cmake
 
-%if 0%{?rhel} == 6 || 0%{?rhel} == 7
-%define cmake_datadir %{_datadir}/cmake3
-%else
-%define cmake_datadir %{_datadir}/cmake
-%endif
-
-
 Name:		trinity-cmake
-Version:	%{tde_version}
-Release:	alt1_%{?!preversion:1}%{?preversion:0_%{preversion}}
+Version:	14.1.3
+Release:	alt1_%{?tde_version}_%{?!preversion:1}%{?preversion:0_%{preversion}}
 Summary:	TDE CMake modules
 Group:		Development/C
 URL:		http://www.trinitydesktop.org/
@@ -47,19 +40,16 @@ License:	GPL-2.0+
 #Vendor:		Trinity Desktop
 #Packager:	Francois Andriot <francois.andriot@free.fr>
 
-Prefix:		%{_prefix}
-BuildArch:	noarch
-
 Source0:		cmake-trinity-14.1.3.tar
 Source1: import.info
 
-BuildRequires:	cmake
-BuildRequires:	desktop-file-utils
+#BuildRequires:	cmake
+#BuildRequires:	desktop-file-utils
 
 Requires:		cmake
 
-Obsoletes:		trinity-cmake < %{version}-%{release}
-Provides:		trinity-cmake = %{version}-%{release}
+Obsoletes:		trinity-cmake < %version-%release
+Provides:		trinity-cmake = %version-%release
 
 %description
 TDE uses its own set of modules and macros to simplify CMake rules.
