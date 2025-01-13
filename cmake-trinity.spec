@@ -51,6 +51,8 @@ Requires:		cmake
 Obsoletes:		cmake-trinity < %version-%release
 Provides:		cmake-trinity = %version-%release
 
+BuildArch: noarch
+
 %description
 TDE uses its own set of modules and macros to simplify CMake rules.
 
@@ -60,16 +62,17 @@ intltool-merge used to merge translations into desktop files.
 
 
 %prep
-%setup -n %name-%tde_version%{?preversion:~%preversion}
+%setup
+
+%build
+%cmake
+%cmake_build
 
 %install
-mkdir -p %buildroot%_datadir/%name/
-cp -a * %buildroot%_datadir/%name/
-
+%cmake_install
 
 %files
-%_datadir/%name/
-
+%_datadir/cmake/*
 
 %changelog
 * Mon Jan 13 2025 Petr Akhlamov <ahlamovpm@basealt.ru> 14.1.2-alt1_1
