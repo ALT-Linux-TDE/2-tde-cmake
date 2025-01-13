@@ -42,11 +42,7 @@ Summary:	TDE CMake modules
 Group:		Development/C
 URL:		http://www.trinitydesktop.org/
 
-%if 0%{?suse_version}
 License:	GPL-2.0+
-%else
-License:	GPLv2+
-%endif
 
 #Vendor:		Trinity Desktop
 #Packager:	Francois Andriot <francois.andriot@free.fr>
@@ -54,7 +50,8 @@ License:	GPLv2+
 Prefix:		%{_prefix}
 BuildArch:	noarch
 
-Source0:		cmake-trinity-%{tde_version}.tar
+Source0:		cmake-trinity-14.1.3.tar
+Source1: import.info
 
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
@@ -63,7 +60,6 @@ Requires:		cmake
 
 Obsoletes:		trinity-cmake < %{version}-%{release}
 Provides:		trinity-cmake = %{version}-%{release}
-Source44: import.info
 
 %description
 TDE uses its own set of modules and macros to simplify CMake rules.
