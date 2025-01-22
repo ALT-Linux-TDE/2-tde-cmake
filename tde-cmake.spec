@@ -28,7 +28,7 @@ BuildRequires: gcc-c++ perl(Encode.pm) cmake desktop-file-utils
 %endif
 %define tde_pkg tde-cmake
 
-Name:		cmake-trinity
+Name:		tde-cmake
 Version:	14.1.3
 Release:	alt1_%{?tde_version}_%{?!preversion:1}%{?preversion:0_%{preversion}}
 Summary:	TDE CMake modules
@@ -40,7 +40,7 @@ License:	GPL-2.0+
 #Vendor:		Trinity Desktop
 #Packager:	Francois Andriot <francois.andriot@free.fr>
 
-Source0:		cmake-trinity-14.1.3.tar
+Source0:		tde-cmake-14.1.3.tar
 Source1: import.info
 
 #BuildRequires:	cmake
@@ -48,8 +48,8 @@ Source1: import.info
 
 Requires:		cmake
 
-Obsoletes:		cmake-trinity < %version-%release
-Provides:		cmake-trinity = %version-%release
+Obsoletes:		tde-cmake < %version-%release
+Provides:		tde-cmake = %version-%release
 
 BuildArch: noarch
 
