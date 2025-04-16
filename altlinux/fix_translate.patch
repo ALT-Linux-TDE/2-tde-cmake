@@ -1,13 +1,37 @@
 diff --git a/tde-cmake/modules/tde_l10n_merge.pl b/tde-cmake/modules/tde_l10n_merge.pl
 --- a/tde-cmake/modules/tde_l10n_merge.pl
 +++ b/tde-cmake/modules/tde_l10n_merge.pl
-@@ -88,5 +88,8 @@
-     foreach my $lang (@langs) {
--        open IN, "$po_dir/$file.$lang" or die "Cannot open $po_dir/$file.$lang: $!";
-+        unless (open IN, "$po_dir/$file.$lang") {
-+            warn "Warning: skipping missing translation $po_dir/$file.$lang\n" unless $quiet;
-+            next;
-+        }
-         while (<IN>) {
-             $trans{$lang} .= $_;
-         }
+@@ -1480,18 +1480,26 @@
+     return @list;
+ }
+ 
+-sub quoted_translation
+-{
++sub quoted_translation {
+     my ($xml_mode, $lang, $string) = @_;
+ 
+     $string = entity_decode($string) if $xml_mode;
+-    $string =~ s/\\\"/\"/g;
++    $string =~ s/\\"/"/g;
++
++    # fallback: return original string if no translation hash for that language
++    unless (exists $translations{$lang}) {
++        return $string;
++    }
++
++    my $translation = $translations{$lang}{$string};
++
++    # fallback: return original string if no specific translation
++    $translation = $string if !defined $translation;
+ 
+-    my $translation = $translations{$lang, $string};
+-    $translation = $string if !$translation;
+     $translation = entity_encode($translation) if $xml_mode;
+-    $translation =~ s/\"/\\\"/g;
+-    return $translation
++    $translation =~ s/"/\\"/g;
++
++    return $translation;
+ }
+ 
+ sub quoted_merge_translations
