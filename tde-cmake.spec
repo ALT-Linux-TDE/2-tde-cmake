@@ -42,6 +42,7 @@ License:	GPL-2.0+
 
 Source0:		tde-cmake-14.1.3.tar
 Source1: import.info
+Patch0: fix_translate.patch
 
 #BuildRequires:	cmake
 #BuildRequires:	desktop-file-utils
@@ -63,6 +64,8 @@ intltool-merge used to merge translations into desktop files.
 
 %prep
 %setup
+
+%patch0 -p1
 
 %build
 %cmake
