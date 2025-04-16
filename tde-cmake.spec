@@ -65,7 +65,7 @@ intltool-merge used to merge translations into desktop files.
 %prep
 %setup
 
-%patch0 -p1
+%patch0 -p2
 
 %build
 %cmake
